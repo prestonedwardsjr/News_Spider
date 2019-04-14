@@ -20,19 +20,16 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://localhost/imdiversityScraper", {
-//   useNewUrlParser: true
-// });
+//  useNewUrlParser: true });
+ 
 
 // Routes
-// A GET route for scraping the echoJS website
-// app.get("/scrape", function(req, res) {
-//   // First, we grab the body of the html with axios
-//   axios.get("https://imdiversity.com/").then(function(response) {
-//     // Then, we load that into cheerio and save it to $ for a shorthand selector
-//     var $ = cheerio.load(response.data);
+//  First, we grab the body of the html with axios
+
 app.get("/scrape", function(req, res) {
  axios.get("https://imdiversity.com/").then(response => {
-  const $ = cheerio.load(response.data);
+   // Then, we load that into cheerio and save it to $ for a shorthand selector
+     const $ = cheerio.load(response.data);
   // console.log(response.data);
     $("article h2").each(function(i, element) {
     // Save an empty result object
